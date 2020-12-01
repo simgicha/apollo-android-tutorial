@@ -21,6 +21,17 @@ android {
         viewBinding = true
     }
 
+    flavorDimensions.add("version")
+
+    productFlavors {
+        create("demo") {
+            dimension = "version"
+        }
+
+        create("full") {
+            dimension = "version"
+        }
+    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -56,4 +67,7 @@ dependencies {
 
 apollo {
     generateKotlinModels.set(true)
+    onCompilationUnit {
+        println(name)
+    }
 }
